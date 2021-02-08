@@ -22,29 +22,53 @@
         }
 
         .person {
-            padding: 1em;
-            border: 1px solid;
-            border-radius: 1em;
+            border: 1px solid red;
+            border-radius: 10px;
+            padding: 8px;
+            margin: 1rem;
+            text-align: center;
+
+        }
+
+        img {
+            max-width: 100%;
+            align-items: center;
+            border-radius: 5%;
+        }
+
+        .container {
+            /*display: flex;*/
+            overflow: hidden;
+
+        }
+
+        .container button {
+            margin: 10px;
+            padding: 20px;
+            align-content: center;
+            background-color: pink;
+            text-align: center;
         }
     </style>
 
 </head>
 
 <body>
-    <nav>
+    <nav class="container">
         <button data-troende="alle" class="valgt">Alle</button>
-        <button data-troende="ja" class="valgt">Troende</button>
-        <button data-troende="nej" class="valgt">Ikke troende</button>
-        <button data-troende="tvivler" class="valgt">Tvivler</button>
+        <button data-troende="ja">Troende</button>
+        <button data-troende="nej">Ikke troende</button>
+        <button data-troende="tvivler">Tvivler</button>
     </nav>
 
     <section id="liste"></section>
 
     <template>
         <article class="person">
+            <img src="" alt="" class="profil-billede">
             <h2 class="navn"></h2>
             <p class="køn"></p>
-            <img src="" alt="" class="profil-billede">
+
         </article>
     </template>
 
