@@ -54,6 +54,7 @@
 </head>
 
 <body>
+
     <nav class="container">
         <button data-troende="alle" class="valgt">Alle</button>
         <button data-troende="ja">Troende</button>
@@ -89,11 +90,11 @@
         // første funktion der kaldes efter DOM er loaded
         function start() {
             const filterKnapper = document.querySelectorAll("nav button");
-            filterKnapper.forEach(knap => knap.addEventListener("click", filerPersoner))
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerPersoner))
             loadJSON();
         }
 
-        function filerPersoner() {
+        function filtrerPersoner() {
             filter = this.dataset.troende;
 
             visPersoner();
