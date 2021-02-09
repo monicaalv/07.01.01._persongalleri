@@ -22,72 +22,29 @@
         }
 
         .person {
-            border: 1px solid red;
-            border-radius: 10px;
-            padding: 8px;
-            margin: 1rem;
-            text-align: center;
-
-        }
-
-        img {
-            max-width: 100%;
-            align-items: center;
-            border-radius: 5%;
-        }
-
-        nav {
-            /*display: flex;*/
-            overflow: hidden;
-
-        }
-
-        .container button {
-            /*margin: 5px;*/
-            padding: 10px;
-            border-radius: 10%;
-            align-content: center;
-            background-color: pink;
-
-        }
-
-        .container button:focus {
-            background-color: yellow;
+            padding: 1em;
+            border: 1px solid;
+            border-radius: 1em;
         }
     </style>
 
 </head>
 
 <body>
-    <header>
-        <h1>Alle</h1>
-
-
-        <nav class="container">
-            <button data-troende="alle" class="valgt">Alle</button>
-            <button data-troende="ja">Troende</button>
-            <button data-troende="nej">Ikke troende</button>
-            <button data-troende="tvivler">Tvivler</button>
-        </nav>
-
-    </header>
 
     <section id="liste"></section>
 
     <template>
         <article class="person">
-            <img src="" alt="" class="profil-billede">
             <h2 class="navn"></h2>
             <p class="køn"></p>
-            <p class="id"></p>
-
+            <img src="" alt="" class="profil-billede">
         </article>
     </template>
 
 
     <script>
         const header = document.querySelector("header h1");
-
         const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
         const myHeaders = {
 
@@ -95,24 +52,15 @@
         }
         document.addEventListener("DOMContentLoaded", start)
         let personer;
-        let filter = "alle";
-
+        let filter = "ja";
 
 
         // første funktion der kaldes efter DOM er loaded
         function start() {
-            const filterKnapper = document.querySelectorAll("nav button");
-            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerPersoner))
+
             loadJSON();
         }
 
-        function filtrerPersoner() {
-            filter = this.dataset.troende;
-            document.querySelector(".valgt").classList.remove(".valgt");
-            this.classList.add(".valgt")
-            visPersoner();
-            header.textContent = this.textContent;
-        }
         async function loadJSON() {
             const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
                 headers: myHeaders
@@ -127,24 +75,18 @@
 
             const dest = document.querySelector("#liste"); // container til articles med en person
             const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
-            dest.textContent = "";
+
             personer.forEach(person => {
                 // loop igennem json (personer)
-                if (filter == person.troende || filter == "alle") {
-
+                if (filter == person.troende) {
                     const klon = skabelon.cloneNode(true);
                     klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                     klon.querySelector(".profil-billede").src = medieurl + person.billede;
-                    klon.querySelector(".person").addEventListener("click", () => visDetaljer(person));
                     dest.appendChild(klon);
 
                 }
 
             })
-        }
-
-        function visDetaljer(hvem) {
-            location.href = `02-detalje.html?id=${hvem._id}`;
         }
     </script>
 </body></html>
