@@ -5,13 +5,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalje</title>
-    <style></style>
+    <style>
+        .person {
+            border: 1px solid red;
+            border-radius: 10px;
+            padding: 8px;
+            margin: 1rem;
+            text-align: center;
+
+        }
+
+        img {
+            max-width: 100%;
+            align-items: center;
+            border-radius: 2%;
+        }
+
+        button {
+            /*margin: 5px;*/
+            padding: 10px;
+            border-radius: 10%;
+            align-content: center;
+            background-color: pink;
+
+        }
+
+        button:hover {
+            background-color: yellow;
+        }
+    </style>
 </head>
 
 <body>
     <article class="person">
         <img src="" alt="" class="profil-billede">
         <h2 class="navn"></h2>
+        <h2 class="efternavn"></h2>
         <p class="køn"></p>
         <p class="id"></p>
         <button>Tilbage</button>
@@ -60,8 +89,5 @@
         function tilbageTilPersonGalleri() {
             history.back();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
